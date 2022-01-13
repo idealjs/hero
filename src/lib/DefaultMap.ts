@@ -1,0 +1,17 @@
+class DefaultMap<K, D> extends Map<K, D> {
+  private getDefault: () => D;
+  constructor(preferences: { getDefault: () => D }) {
+    super();
+    this.getDefault = preferences.getDefault;
+  }
+  get(key: K): D {
+    let value = super.get(key);
+    if (!value) {
+      value = this.getDefault();
+      super.set(key, value);
+    }
+    return value;
+  }
+}
+
+export default DefaultMap;
