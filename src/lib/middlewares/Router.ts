@@ -11,47 +11,53 @@ class Router {
     middleware: HeroMiddleware;
   }[] = [];
 
-  public use = (path: string, middleware: HeroMiddleware) => {
+  // common
+  public use = (path: Path, middleware: HeroMiddleware) => {
     this.routerMiddlewares.push({
       method: "COMMON",
       path,
       middleware,
     });
   };
+
   // get
-  public get = (path: string, middleware: HeroMiddleware) => {
+  public get = (path: Path, middleware: HeroMiddleware) => {
     this.routerMiddlewares.push({
       method: "GET",
       path,
       middleware,
     });
   };
+
   // post
-  public create = (path: string, middleware: HeroMiddleware) => {
+  public create = (path: Path, middleware: HeroMiddleware) => {
     this.routerMiddlewares.push({
       method: "POST",
       path,
       middleware,
     });
   };
+
   // update
-  public update = (path: string, middleware: HeroMiddleware) => {
+  public update = (path: Path, middleware: HeroMiddleware) => {
     this.routerMiddlewares.push({
       method: "PATCH",
       path,
       middleware,
     });
   };
+
   // put
-  public upsert = (path: string, middleware: HeroMiddleware) => {
+  public upsert = (path: Path, middleware: HeroMiddleware) => {
     this.routerMiddlewares.push({
       method: "PUT",
       path,
       middleware,
     });
   };
+
   // delete
-  public remove = (path: string, middleware: HeroMiddleware) => {
+  public remove = (path: Path, middleware: HeroMiddleware) => {
     this.routerMiddlewares.push({
       method: "DELETE",
       path,
