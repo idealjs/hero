@@ -14,10 +14,10 @@ class Hero {
   middlewares: HeroMiddleware[] = [];
   constructor(config?: IHeroConfig) {}
 
-  public onRequestHandler: OnRequestHandler = (request, response) => {
-    this.middlewares.forEach((middleware) => {
-      middleware(request, response);
-    });
+  public onRequestHandler: OnRequestHandler = async (request, response) => {
+    for await (const middleware of this.middlewares) {
+      await middleware(request, response);
+    }
   };
 
   public use: UseHeroMiddleware = (middleware) => {

@@ -11,6 +11,8 @@ export interface IHeroRequest extends Http2ServerRequest {}
 
 export interface IHeroResponse extends Http2ServerResponse {}
 
-export type HeroMiddleware = (req: IHeroRequest, res: IHeroResponse) => void;
+export type HeroMiddleware =
+  | ((req: IHeroRequest, res: IHeroResponse) => void)
+  | ((req: IHeroRequest, res: IHeroResponse) => Promise<void>);
 
 export type UseHeroMiddleware = (heroMiddleware: HeroMiddleware) => void;
