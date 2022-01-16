@@ -11,7 +11,7 @@ interface Hero {
 }
 
 class Hero {
-  middlewares: HeroMiddleware[] = [];
+  private middlewares: HeroMiddleware[] = [];
   constructor(config?: IHeroConfig) {}
 
   public onRequestHandler: OnRequestHandler = async (request, response) => {

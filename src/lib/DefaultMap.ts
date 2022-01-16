@@ -1,8 +1,8 @@
 class DefaultMap<K, D> extends Map<K, D> {
   private getDefault: () => D;
-  constructor(preferences: { getDefault: () => D }) {
+  constructor(props: { getDefault: () => D }) {
     super();
-    this.getDefault = preferences.getDefault;
+    this.getDefault = props.getDefault;
   }
   get(key: K): D {
     let value = super.get(key);
