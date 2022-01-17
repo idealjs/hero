@@ -1,3 +1,5 @@
+import { HeroMiddleware } from "../type";
+
 export type Id = number | string;
 export type NullableId = Id | null;
 
@@ -41,3 +43,39 @@ interface IQuery {
 export interface IParams {
   query?: IQuery;
 }
+
+export const mergeMethods = (methods: {
+  find?: IFind;
+  create?: ICreate;
+  update?: IUpdate;
+  patch?: IPatch;
+  remove?: IRemove;
+}): HeroMiddleware => {
+  console.debug("[debug] mergeMethods");
+  return (req, res) => {
+    console.log("test test");
+    switch (req.method) {
+      case "GET":
+        break;
+      case "POST":
+        break;
+      case "PUT":
+        break;
+      case "PATCH":
+        break;
+      case "DELETE":
+        break;
+      default:
+        break;
+    }
+  };
+};
+
+export const mergeServices = (services: {
+  [path: string]: HeroMiddleware;
+}): HeroMiddleware => {
+  console.debug("[debug] mergeServices");
+  return () => {
+    console.log("test test");
+  };
+};
