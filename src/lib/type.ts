@@ -1,10 +1,21 @@
-import { Http2ServerRequest, Http2ServerResponse } from "http2";
+import {
+  Http2ServerRequest,
+  Http2ServerResponse,
+  IncomingHttpHeaders,
+  ServerHttp2Stream,
+} from "http2";
 
 export interface IHeroConfig {}
 
 export type OnRequestHandler = (
   request: Http2ServerRequest,
   response: Http2ServerResponse
+) => void;
+
+export type StreamListener = (
+  stream: ServerHttp2Stream,
+  headers: IncomingHttpHeaders,
+  flags: number
 ) => void;
 
 export interface IHeroRequest extends Http2ServerRequest {}
